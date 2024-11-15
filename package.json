@@ -17,7 +17,8 @@
     "posttest": "npm run format",
     "prepare": "husky install",
     "lint:css": "stylelint '**/*.css'",
-    "pretest": "npm run lint:css"
+    "pretest": "npm run lint:css",
+    "gitformatstaged":"git-format-staged -f 'prettier --ignore-unknown --stdin --stdin-filepath \"{}\"' ."
   },
   "dependencies": {
     "@builder.io/partytown": "^0.10.2",
