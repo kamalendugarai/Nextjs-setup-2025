@@ -14,7 +14,10 @@
     "lint": "next lint",
     "knip": "knip",
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
-    "posttest": "npm run format"
+    "posttest": "npm run format",
+    "prepare": "husky install",
+    "lint:css": "stylelint '**/*.css'",
+    "pretest": "npm run lint:css"
   },
   "dependencies": {
     "@builder.io/partytown": "^0.10.2",
@@ -36,10 +39,18 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
+    "husky": "^9.1.6",
     "knip": "^5.37.0",
+    "lint-staged": "^15.2.10",
     "postcss": "^8",
     "prettier": "^3.3.3",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.6.3"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{ts,tsx,css,md}": "prettier --write"
   }
 }
