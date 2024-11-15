@@ -10,6 +10,7 @@
     "knip": "knip"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.10.2",
     "@radix-ui/react-accordion": "^1.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
