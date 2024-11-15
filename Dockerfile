@@ -1,11 +1,14 @@
 
-FROM node:20-alpine AS base
+FROM node:20.12.2-alpine AS base
 WORKDIR /app
 COPY . .
 
-FROM base AS builder
-WORKDIR /app
-RUN npm ci && npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/
+# FROM base AS builder
+# WORKDIR /app
+RUN npm ci --force
+RUN npm run build
+RUN cp -r public .next/standalone/
+RUN cp -r .next/static .next/standalone/.next/
 
 
     
