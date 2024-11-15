@@ -1,5 +1,5 @@
 
-FROM node:20-alpine
+FROM node:20-alpine as Base
 
 WORKDIR /app
 
@@ -7,8 +7,21 @@ COPY . .
 
 EXPOSE 3000
 RUN npm ci && npm run build
-RUN echo ${pwd}
-CMD ["npm", "run", "build", "&", "npm", "run", "start"]
+
+# Beware the static files should not always be inserted to the standalone folder, they should actually go into the folder where the project resides which may be different in monorepos. For example, in our case:
+COPY --from=builder --chown=nextjs:nodejs /app/pages/backoffice/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/pages/backoffice/.next/static ./pages/backoffice/.next/static
+    
+EXPOSE 3000
+
+ENV PORT=3000
+
+# # server.js is created by next build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/next-config-js/output
+ENV HOSTNAME="0.0.0.0"
+CMD ["node", ".next/standalone/server.js"]
+
+
 # # syntax=docker.io/docker/dockerfile:1
 
 # FROM node:20-alpine AS base
