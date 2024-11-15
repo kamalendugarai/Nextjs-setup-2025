@@ -1,6 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "***********************************"
-
-npx lint-staged
+echo "/******************************/"
+echo "/****** RUNNING LINTING *******/"
+echo "/******************************/"
+npm run lint
