@@ -1,7 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+YELLOW='\033[1;30m'
+echo -e "${YELLOW} Green Colored Statement"
+
 echo "/******************************/"
 echo "/****** RUNNING LINTING *******/"
 echo "/******************************/"
+
 npm run lint
