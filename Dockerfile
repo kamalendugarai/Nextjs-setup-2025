@@ -1,15 +1,48 @@
+FROM ubuntu:24.04 AS base
+RUN apt-get update
+RUN apt install -y curl
+RUN export NVM_DIR="$HOME/.nvm"
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+# # RUN . "$NVM_DIR/nvm.sh"
+# RUN /bin/bash -ic "source ~/.bashrc"
+# RUN echo nvm
 
-FROM node:20.12.2-alpine AS base
+ENV NVM_DIR=/usr/local/nvm
+ENV NODE_VERSION=v20.12.2
+
+RUN mkdir -p $NVM_DIR && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use --delete-prefix $NODE_VERSION"
+
+ENV NODE_PATH=$NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules
+ENV PATH=$NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
+
+
+
+
+
 WORKDIR /app
 COPY . .
 
-# FROM base AS builder
-# WORKDIR /app
+RUN echo '${node-v}' 
 RUN npm ci --force
-RUN npx -y playwright@latest install --with-deps
 RUN npm run build
 RUN cp -r public .next/standalone/
 RUN cp -r .next/static .next/standalone/.next/
+
+
+
+
+# FROM node:20.12.2-alpine AS base
+# WORKDIR /app
+# COPY . .
+
+# # FROM base AS builder
+# # WORKDIR /app
+# RUN npm ci --force
+# RUN npx -y playwright@latest install --with-deps
+# RUN npm run build
+# RUN cp -r public .next/standalone/
+# RUN cp -r .next/static .next/standalone/.next/
 
 
     
