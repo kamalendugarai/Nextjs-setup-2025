@@ -48,8 +48,8 @@ RUN cp -r .next/static .next/standalone/.next/
     
 EXPOSE 3000
 
-# ENV PORT=3000
-# ENV HOSTNAME="0.0.0.0"
+ENV PORT=3000
+ENV HOSTNAME="172.17.0.3"
 
 # # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
