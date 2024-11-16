@@ -6,7 +6,7 @@ COPY . .
 # FROM base AS builder
 # WORKDIR /app
 RUN npm ci --force
-RUN RUN npx -y playwright@latest install --with-deps
+RUN npx -y playwright@latest install --with-deps
 RUN npm run build
 RUN cp -r public .next/standalone/
 RUN cp -r .next/static .next/standalone/.next/
