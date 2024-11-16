@@ -35,6 +35,10 @@ jobs:
           docker build . --tag nextjsproject
           docker run --detach nextjsproject
 
+      # Install prodject dependencies
+      - name: Install dependencies
+        run: npm ci --force
+
       # Runs location build
       - name: Run Playwright Test
         run: npx playwright install --with-deps && npx npx --yes playwright test
