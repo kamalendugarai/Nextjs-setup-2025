@@ -23,7 +23,7 @@ ENV PATH=$NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
 WORKDIR /app
 COPY . .
 
-RUN echo '${node-v}' 
+RUN node -v
 RUN npm ci --force
 RUN npm run build
 RUN cp -r public .next/standalone/
