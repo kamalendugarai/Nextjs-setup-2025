@@ -35,6 +35,13 @@ jobs:
           docker build . --tag nextjsproject
           docker run --detach nextjsproject
 
+      # Install nvm
+      - name: Install nvm 
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+          source ~/.bashrc
+
+
       # Install prodject dependencies
       - name: Install dependencies
         run: nvm install 20.12.2 && nvm use 20.12.2 && npm ci --force
