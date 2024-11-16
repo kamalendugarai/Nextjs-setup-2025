@@ -23,11 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.2
       - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
       # - name: Run build and execute docker container
@@ -36,14 +35,9 @@ jobs:
       #     docker run --detach nextjsproject
 
       # Install nvm
-      - name: Install nvm 
+      - name: Run test
         run: |
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
-          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
-          nvm install 20.12.2 && nvm use 20.12.2 && npm ci --force 
-          npm run dev
+          npm ci --force
           npx playwright install --with-deps
           npx npx --yes playwright test
 
