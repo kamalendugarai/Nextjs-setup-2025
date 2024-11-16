@@ -33,6 +33,7 @@ jobs:
       - name: Run build and execute docker container
         run: |
           docker build . --tag nextjsproject
+          docker run --detach nextjsproject
 
       - name: Run Playwright Test
         run: npx --yes playwright test
