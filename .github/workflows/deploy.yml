@@ -38,8 +38,9 @@ jobs:
       # Install nvm
       - name: Install nvm 
         run: |
+          export NODE_PATH=$HOME/.nvm/versions/node/20.12.2/lib/node_modules
+          export PATH=$HOME/.nvm/versions/node/20.12.2/bin:$PATH
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-          source ~/.bashrc
 
 
       # Install prodject dependencies
