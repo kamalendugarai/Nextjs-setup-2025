@@ -32,9 +32,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run build and execute docker container
         run: |
-          docker build . --tag nextjsproject,
-          docker run --detach nextjsproject
-
+          docker build . --tag nextjsproject
+          
       - name: Run Playwright Test
         run: npx playwright test
 
