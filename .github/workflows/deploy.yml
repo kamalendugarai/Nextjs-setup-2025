@@ -42,11 +42,10 @@ jobs:
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
+          nvm install 20.12.2 && nvm use 20.12.2 && npm ci --force 
 
 
-      # Install prodject dependencies
-      - name: Install dependencies
-        run: nvm install 20.12.2 && nvm use 20.12.2 && npm ci --force
+     
 
       # Runs location build
       - name: Run Playwright Test
