@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+test.use({baseURL: 'http://127.0.0.3:3000'});
 test.describe('Homepage', () => {
 
   test.beforeEach(async ({ page }) => {
