@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
 	basePath: '',
 	// set the compress option to false to allow nginx to handle compression
 	compress: false,
-	output: 'standalone',
+	output: 'export', // 'standalone',
 	crossOrigin: 'anonymous',
 	cleanDistDir: true,
 	distDir: 'build',
