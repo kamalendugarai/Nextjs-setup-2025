@@ -22,15 +22,17 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test
+      - name: Run Production Build
+        run: npm run build
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: Folder to save
+          name: Build folder
           path: build
           retention-days: 1
 
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v4
-        with:
-          name: code-coverage-report
-          path: build/test/code-coverage.html
+      # - name: Archive code coverage results
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: code-coverage-report
+      #     path: build/test/code-coverage.html
