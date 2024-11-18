@@ -16,7 +16,7 @@
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
     "posttest": "npm run format",
     "prepare": "husky install",
-    "lint:css": "stylelint '**/*.css'",
+    "lint:css": "stylelint --fix '**/*.css'",
     "pretest": "npm run lint:css",
     "gitformatstaged": "git-format-staged -f 'prettier --ignore-unknown --stdin --stdin-filepath \"{}\"' ."
   },

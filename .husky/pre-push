@@ -5,7 +5,14 @@ YELLOW='\033[1;33m'
 WHITE='\033[0;37m'
 
 echo ""
-echo "${YELLOW} RUNNING Linting"
+echo "${YELLOW} RUNNING CSS Linting"
+echo "${WHITE}"
+npm run pretest
+echo ""
+
+echo "${YELLOW} RUNNING JS Linting"
 echo "${WHITE}"
 
 npm run lint
+
+
