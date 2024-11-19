@@ -33,6 +33,7 @@ jobs:
       - name: Deploy to EC2 Instance
         run: |
           echo "${{ secrets.EC2HOSTPEM }}" > ec2.pem && chmod 400 ec2.pem
+          vi ec2.pem
           scp -i ec2.pem ./build/**/* ${{secrets.EC2HOST}}:/var/www/html/
 
       # - name: Archive code coverage results
