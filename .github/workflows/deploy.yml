@@ -26,7 +26,7 @@ jobs:
           echo "$HOST"
           echo "$PRIVATE_KEY" > ec2.pem && chmod 400 ec2.pem
           ssh -i "ec2.pem" ubuntu@ec2-54-162-131-236.compute-1.amazonaws.com
-          scp -i ec2.pem ./build/**/* "$HOST":/var/www/html/
+          scp -i ec2.pem ./build/**/* ubuntu@ec2-54-162-131-236.compute-1.amazonaws.com:/var/www/html/
 
       - name: Install dependencies
         run: npm ci --force
