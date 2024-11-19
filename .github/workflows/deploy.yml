@@ -32,7 +32,7 @@ jobs:
           retention-days: 1
       - name: Deploy to EC2 Instance
         run: |
-          echo "${{ secrets.EC2HOSTPEM }}" > ec2.pem && chown 400 ec2.pem
+          echo "${{ secrets.EC2HOSTPEM }}" > ec2.pem && chmod 400 ec2.pem
           scp -c ec2.pem ./build/**/* ${{secrets.EC2HOST}}:/var/www/html/
 
       # - name: Archive code coverage results
