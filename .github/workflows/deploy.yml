@@ -16,6 +16,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.12.2
+
+      - name: Deploy to EC2 Instance*******
+        env:
+          PRIVATE_KEY: ${{ secrets.EC2HOSTPEM }}
+          HOST: ${{ secrets.EC2HOST }}
+        run: |
+          echo "$PRIVATE_KEY"
+          echo "$HOST"
+          echo "$PRIVATE_KEY" > ec2.pem && chmod 400 ec2.pem
+          ssh -i "deployfromgithub.pem" ubuntu@ec2-54-162-131-236.compute-1.amazonaws.com
+          scp -i ec2.pem ./build/**/* "$HOST":/var/www/html/
+
       - name: Install dependencies
         run: npm ci --force
       - name: Install Playwright Browsers
@@ -35,9 +47,10 @@ jobs:
           PRIVATE_KEY: ${{ secrets.EC2HOSTPEM }}
           HOST: ${{ secrets.EC2HOST }}
         run: |
+          echo 
           echo "$PRIVATE_KEY" > ec2.pem && chmod 400 ec2.pem
+          ssh -i "deployfromgithub.pem" ubuntu@ec2-54-162-131-236.compute-1.amazonaws.com
           scp -i ec2.pem ./build/**/* "$HOST":/var/www/html/
-          vi "$PRIVATE_KEY"
 
       # - name: Archive code coverage results
       #   uses: actions/upload-artifact@v4
