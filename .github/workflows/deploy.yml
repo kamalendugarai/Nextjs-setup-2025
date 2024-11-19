@@ -25,7 +25,7 @@ jobs:
           echo "$PRIVATE_KEY"
           echo "$HOST"
           echo "$PRIVATE_KEY" > ec2.pem && chmod 400 ec2.pem
-          ssh -i "deployfromgithub.pem" ubuntu@ec2-54-162-131-236.compute-1.amazonaws.com
+          ssh -i "ec2.pem" ubuntu@ec2-54-162-131-236.compute-1.amazonaws.com
           scp -i ec2.pem ./build/**/* "$HOST":/var/www/html/
 
       - name: Install dependencies
