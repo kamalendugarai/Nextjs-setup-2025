@@ -49,6 +49,7 @@ jobs:
 
       - name: Create deploy-bucket
         uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.3
+
         with:
           aws_access_key_id: AKIA5G2VGHEC6Z54CVIV
           aws_secret_access_key: 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
@@ -57,7 +58,7 @@ jobs:
           aws_site_source_folder: './build'
           tf_state_file_name_append: catalog
 
-          tf_action: 'apply'
+          tf_action: 'plan'
           tf_state_bucket: 'nextjsdeployment'
           tf_state_bucket_destroy: false
 
