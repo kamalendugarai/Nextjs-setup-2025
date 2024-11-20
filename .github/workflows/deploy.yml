@@ -35,13 +35,13 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
       - name: Run Production Build
-        run: npm run build
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: buildfolder
-          path: build
-          retention-days: 1
+        run: npm run build && echo $(pwd) && echo $(ls)
+      # - uses: actions/upload-artifact@v4
+      #   if: ${{ !cancelled() }}
+      #   with:
+      #     name: buildfolder
+      #     path: build
+      #     retention-days: 1
       - name: Create deploy-bucket
         uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.3
         with:
