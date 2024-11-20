@@ -32,7 +32,6 @@ jobs:
         run: |
           npm ci --force
           npm run build
-          cp -r ./build/**/* ../build
           echo $(pwd)
           echo $(ls)
 

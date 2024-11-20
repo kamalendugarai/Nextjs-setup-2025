@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
 	output: 'export', // 'standalone',
 	crossOrigin: 'anonymous',
 	cleanDistDir: true,
-	distDir: 'build',
+	distDir: '../build',
 	devIndicators: {
 		appIsrStatus: true,
 		buildActivity: true,
