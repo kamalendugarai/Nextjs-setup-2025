@@ -32,7 +32,7 @@ jobs:
         run: |
           npm ci --force
           npm run build
-          mkdir ../build
+          mkdir ../build && mkdir ../build/build
           cp -r ./build/**/* ../build/build
           echo $(pwd)
           echo $(ls)
