@@ -34,6 +34,7 @@ jobs:
           npm run build
           echo $(pwd)
           echo $(ls)
+          echo $(ll)
 
       # - name: Install Playwright Browsers
       #   run: npx playwright install --with-deps
