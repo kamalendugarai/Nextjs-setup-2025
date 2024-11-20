@@ -57,7 +57,7 @@ jobs:
           aws_secret_access_key: Sw7V5JIVwsEcjzOu3rtCaUlyTcICJB/vqRoINTcY
           aws_default_region: us-east-1
 
-          aws_site_source_folder: '../build/**/*'
+          aws_site_source_folder: '../build'
           tf_state_file_name_append: ''
 
           tf_action: 'apply'
