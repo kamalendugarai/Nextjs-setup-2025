@@ -32,8 +32,8 @@ jobs:
         run: |
           npm ci --force
           npm run build
-          mkdir ../build && mkdir ../build/build
-          cp -r ./build/**/* ../build/build
+          mkdir ../build
+          cp -r ./build ../build
           echo $(pwd)
           echo $(ls)
 
@@ -57,7 +57,7 @@ jobs:
           aws_secret_access_key: Sw7V5JIVwsEcjzOu3rtCaUlyTcICJB/vqRoINTcY
           aws_default_region: us-east-1
 
-          aws_site_source_folder: '../build/build'
+          aws_site_source_folder: '../build'
           tf_state_file_name_append: ''
 
           tf_action: 'apply'
