@@ -60,7 +60,7 @@ jobs:
           aws_site_source_folder: '../build'
           tf_state_file_name_append: catalog
 
-          tf_action: 'plan'
+          tf_action: 'apply'
           tf_state_bucket: 'nextjsdeployment'
           tf_state_bucket_destroy: false
 
