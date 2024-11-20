@@ -58,7 +58,7 @@ jobs:
           aws_default_region: us-east-1
 
           aws_site_source_folder: '../build'
-          tf_state_file_name_append: catalog
+          tf_state_file_name_append: ''
 
           tf_action: 'apply'
           tf_state_bucket: 'nextjsdeployment'
