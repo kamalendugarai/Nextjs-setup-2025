@@ -8,10 +8,12 @@
     "npm": "=10.5.0"
   },
   "scripts": {
-    "installingGdown": "pip install gdown",
+    "gdown": "pip install gdown",
+    "instgdown": "echo '****************************************' && echo 'Current Python Version:\\033[1;33m' $(python --version) && echo '\\033[0;37mRequired Python Version: \\033[1;33mPython' $(cat ./.python-version) && echo '' && echo '\\033[0;37mInstalling \\033[1;33mgdown\\033[0;37m' && echo '\\033[0;37m****************************************' && echo '\\033[0;37mInstalling \\033[1;33mgdown\\033[0;37m' && npm run gdown -s",
+    "installgdown": "npm run instgdown -s",
     "copyEnvFiles": "gdown https://drive.google.com/uc\\?id\\=1LvmSpCEVZuIFK1b31P_lS0TwJ3BEnwcC -O .env ",
     "currentPythonVersion": "python --version",
-    "generateEnvPrompt": "echo '****************************************' && echo 'Current Python Version:\\033[1;33m' $(python --version) && echo '\\033[0;37mRequired Python Version: \\033[1;33mPython' $(cat ./.python-version) && echo '' && echo '\\033[0;37mInstalling \\033[1;33mgdown\\033[0;37m' && echo '\\033[0;37m****************************************' && npm run installingGdown -s && echo '' && echo '\\033[1;33mCopying env files...\\033[0;37m' && npm run copyEnvFiles -s && echo ''",
+    "generateEnvPrompt": "echo '' && echo '\\033[1;33mCopying .env files...\\033[0;37m' && echo '' && npm run copyEnvFiles -s && echo ''",
     "getenv": "npm run generateEnvPrompt -s",
     "dev": "next dev",
     "build": "next build --debug",
