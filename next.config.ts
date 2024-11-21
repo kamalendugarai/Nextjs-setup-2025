@@ -45,5 +45,12 @@ const nextConfig: NextConfig = {
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
 	reactStrictMode: true
+	/**
+	 * This is needed only for react-pdf package
+	 */
+	// webpack: (config) => {
+	// 	config.resolve.alias.canvas = false;
+	// 	return config;
+	// }
 };
 export default nextConfig;

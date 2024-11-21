@@ -23,6 +23,8 @@
   "dependencies": {
     "@builder.io/partytown": "^0.10.2",
     "@radix-ui/react-accordion": "^1.2.1",
+    "@react-email/components": "0.0.28",
+    "@react-pdf/renderer": "^4.1.4",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.9",
@@ -41,6 +43,7 @@
     "react-error-boundary": "^4.1.2",
     "react-hook-form": "^7.53.2",
     "react-icons": "^5.3.0",
+    "react-pdf": "^9.1.1",
     "react-use": "^17.5.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
