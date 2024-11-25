@@ -31,6 +31,7 @@
   "dependencies": {
     "@builder.io/partytown": "^0.10.2",
     "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-label": "^2.1.0",
     "@react-email/components": "0.0.28",
     "@react-pdf/renderer": "^4.1.4",
     "@tailwindcss/aspect-ratio": "^0.4.2",
