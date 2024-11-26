@@ -43,6 +43,7 @@
     "crypto-js": "^4.2.0",
     "date-fns": "^4.1.0",
     "domsanitizer": "^0.2.3",
+    "flowbite": "^2.5.2",
     "framer-motion": "^11.11.17",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.459.0",
