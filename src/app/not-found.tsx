@@ -7,7 +7,10 @@ import {
 	CardHeader,
 	CardTitle
 } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+
 import { Anton } from 'next/font/google';
+import { Button as Buton } from 'flowbite-react';
 
 const anton = Anton({
 	subsets: ['latin'],
@@ -34,6 +37,8 @@ const NotFound = () => {
 					<form>
 						<div className='grid w-full items-center gap-4'>
 							<div className='flex flex-col space-y-1.5'></div>
+							<Buton>Click me</Buton>
+							<Button>Home</Button>
 						</div>
 					</form>
 				</CardContent>

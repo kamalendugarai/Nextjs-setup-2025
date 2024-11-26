@@ -1,11 +1,13 @@
 import type { Config } from 'tailwindcss';
+const flowbite = require('flowbite-react/tailwind');
 
 export default {
 	darkMode: ['class'],
 	content: [
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/app/**/*.{js,ts,jsx,tsx,mdx}'
+		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
+		flowbite.content()
 	],
 	theme: {
 		extend: {
@@ -391,6 +393,7 @@ export default {
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/forms'),
 		require('@tailwindcss/aspect-ratio'),
-		require('@tailwindcss/container-queries')
+		require('@tailwindcss/container-queries'),
+		flowbite.plugin()
 	]
 } satisfies Config;
