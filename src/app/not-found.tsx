@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { redirect } from 'next/navigation'
+
 import {
 	Card,
 	CardContent,
@@ -11,6 +13,7 @@ import { Button } from '@/components/ui/button';
 
 import { Anton } from 'next/font/google';
 import { Button as Buton } from 'flowbite-react';
+import Link from 'next/link';
 
 const anton = Anton({
 	subsets: ['latin'],
@@ -38,7 +41,7 @@ const NotFound = () => {
 						<div className='grid w-full items-center gap-4'>
 							<div className='flex flex-col space-y-1.5'></div>
 							<Buton>Click me</Buton>
-							<Button>Home</Button>
+							<Link href='/'>Home</Link>
 						</div>
 					</form>
 				</CardContent>
