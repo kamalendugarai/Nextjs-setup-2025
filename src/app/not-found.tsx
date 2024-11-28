@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { redirect } from 'next/navigation'
 
 import {
 	Card,
@@ -9,7 +8,6 @@ import {
 	CardHeader,
 	CardTitle
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 
 import { Anton } from 'next/font/google';
 import { Button as Buton } from 'flowbite-react';
