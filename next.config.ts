@@ -2,10 +2,14 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
 	/* config options here */
+	/**
+	 * You need to change base path in middleware.ts
+	 * file to match the base path set here
+	 */
 	basePath: '',
 	// set the compress option to false to allow nginx to handle compression
 	compress: false,
-	output: 'export', // 'standalone',
+	// output: 'export', // 'standalone',
 	crossOrigin: 'anonymous',
 	cleanDistDir: true,
 	distDir: 'build',
@@ -51,6 +55,13 @@ const nextConfig: NextConfig = {
 	// webpack: (config) => {
 	// 	config.resolve.alias.canvas = false;
 	// 	return config;
+	// }
+	// i18n: {
+	// 	locales: ['en', 'es', 'fr', 'nl'],
+	// 	defaultLocale: 'en',
+	// 	// http://surl.li/frxqww
+	// 	// http://surl.li/nbojgy
+	// 	localeDetection: false
 	// }
 };
 export default nextConfig;

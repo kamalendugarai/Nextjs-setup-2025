@@ -6,31 +6,38 @@ import {
 	AccordionTrigger
 } from '@/components/ui/accordion';
 
-export default function Home() {
+// import en from '@/app/i18n/en';
+// import fr from '@/app/i18n/fr';
+
+export default async function Home({ params, searchParams }: { params: Promise<object> | undefined, searchParams: Promise<object> | undefined }) {
+	console.log(await params)
+	console.log(await searchParams)
+
 	return (
 		<div className='grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-			<Accordion type='single' collapsible>
-				<AccordionItem value='item-1'>
-					<AccordionTrigger>Is it accessible?</AccordionTrigger>
-					<AccordionContent>
-						Yes. It adheres to the WAI-ARIA design pattern.
-					</AccordionContent>
-				</AccordionItem>
-				<AccordionItem value='item-2'>
-					<AccordionTrigger>Is it accessible?</AccordionTrigger>
-					<AccordionContent>
-						Yes. It adheres to the WAI-ARIA design pattern.
-					</AccordionContent>
-				</AccordionItem>
-				<AccordionItem value='item-3'>
-					<AccordionTrigger>Is it accessible?</AccordionTrigger>
-					<AccordionContent>
-						Yes. It adheres to the WAI-ARIA design pattern.
-					</AccordionContent>
-				</AccordionItem>
-			</Accordion>
 
 			<main className='flex flex-col gap-8 row-start-2 items-center sm:items-start'>
+				{/* <h1>{locale.title}</h1> */}
+				<Accordion type='single' collapsible>
+					<AccordionItem value='item-1'>
+						<AccordionTrigger>Is it accessible?</AccordionTrigger>
+						<AccordionContent>
+							Yes. It adheres to the WAI-ARIA design pattern.
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value='item-2'>
+						<AccordionTrigger>Is it accessible?</AccordionTrigger>
+						<AccordionContent>
+							Yes. It adheres to the WAI-ARIA design pattern.
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value='item-3'>
+						<AccordionTrigger>Is it accessible?</AccordionTrigger>
+						<AccordionContent>
+							Yes. It adheres to the WAI-ARIA design pattern.
+						</AccordionContent>
+					</AccordionItem>
+				</Accordion>
 				<Image
 					className='dark:invert'
 					src='/next.svg'

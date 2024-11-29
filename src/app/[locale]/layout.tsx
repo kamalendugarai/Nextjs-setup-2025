@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import { ThemeModeScript } from 'flowbite-react';
-import NeonCursor from '@/app/utils/cursor';
+
+
+import NeonCursor from '@/app/[locale]/utils/cursor';
 
 import localFont from 'next/font/local';
 import './globals.css';
+
 
 const geistSans = localFont({
 	src: './fonts/GeistVF.woff',
@@ -27,7 +30,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
+		<html>
 			<head>
 				<ThemeModeScript />
 			</head>
