@@ -1,4 +1,4 @@
 const en = {
-	title: 'This is a English title'
+	title: 'This is an English title'
 };
 export default en;

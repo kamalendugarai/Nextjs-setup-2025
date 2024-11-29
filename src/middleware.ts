@@ -20,15 +20,8 @@ export function middleware(request: NextRequest) {
 	) {
 		return;
 	}
-	// const modifedResp = i18nRouter(request, i18nConfig);
-	// console.log({ request });
-	// console.log('***************************#####################');
-	// console.log({ modifedResp });
-
-	// return i18nRouter(request, i18nConfig);
 
 	if (request.nextUrl.locale === 'default') {
-		// console.log('########################', request.nextUrl.locale);
 		const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
 
 		return NextResponse.redirect(
