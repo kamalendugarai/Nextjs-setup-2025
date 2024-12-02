@@ -55,11 +55,11 @@ export function middleware(request: NextRequest) {
 		.replace(/\s{2,}/g, ' ')
 		.trim();
 
-	modifedResponse.headers.set('x-nonce', nonce);
-	modifedResponse.headers.set(
-		'Content-Security-Policy',
-		contentSecurityPolicyHeaderValue
-	);
+	// modifedResponse.headers.set('x-nonce', nonce);
+	// modifedResponse.headers.set(
+	// 	'Content-Security-Policy',
+	// 	contentSecurityPolicyHeaderValue
+	// );
 
 	return modifedResponse;
 }
