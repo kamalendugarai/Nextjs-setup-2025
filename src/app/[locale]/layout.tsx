@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
 import { ThemeModeScript } from 'flowbite-react';
-
-
 import NeonCursor from '@/app/[locale]/utils/cursor';
-
 import localFont from 'next/font/local';
 import './globals.css';
+
 
 
 const geistSans = localFont({
