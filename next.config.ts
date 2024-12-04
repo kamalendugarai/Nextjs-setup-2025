@@ -1,4 +1,8 @@
 import type { NextConfig } from 'next';
+import withPlaiceholder from '@plaiceholder/next';
+/**
+ * @type {import('next').NextConfig}
+ */
 
 const nextConfig: NextConfig = {
 	/* config options here */
@@ -17,6 +21,11 @@ const nextConfig: NextConfig = {
 		appIsrStatus: true,
 		buildActivity: true,
 		buildActivityPosition: 'bottom-right'
+	},
+	images: {
+		formats: ['image/avif', 'image/webp'],
+		// Should read https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
+		minimumCacheTTL: 60
 	},
 	env: {
 		customKey: 'my-value'
@@ -64,4 +73,4 @@ const nextConfig: NextConfig = {
 	// 	localeDetection: false
 	// }
 };
-export default nextConfig;
+export default withPlaiceholder(nextConfig);

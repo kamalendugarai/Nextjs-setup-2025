@@ -3,7 +3,7 @@ import { ThemeModeScript } from 'flowbite-react';
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import NeonCursor from '@/app/[locale]/utils/cursor';
 import localFont from 'next/font/local';
-import './[locale]/globals.css';
+import '@/app/[locale]/globals.css';
 
 
 
