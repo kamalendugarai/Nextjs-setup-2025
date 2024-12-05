@@ -31,10 +31,10 @@ const NextImage = async ({ src = '', effect = 'blur', alt = '', width, height, l
 	return (
 		<div className={`next-image relative w-[${ultimWidth}px] h-[${ultimHeight}px] bg-[${hexColor}]`}>
 			{
-				showInfo && <div className={`absolute top-0 left-0 w-full h-full flex items-center justify-center p-5`}>
+				showInfo && <div className={`absolute top-0 left-0 w-full h-full list-disc items-center justify-center p-1 bg-black/[.7] overflow-scroll`}>
 					{
 						...Object.entries(metadata).map(([key, value]) => {
-							return <div key={key} className="text-white text-xs">{key}: {value.toString()}</div>
+							return <div key={key} className="text-white text-sm">{key}: {value.toString()}</div>
 						})
 					}
 				</div>

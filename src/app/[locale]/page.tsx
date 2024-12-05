@@ -51,7 +51,7 @@ export default async function Home({ params, searchParams }: { params: Promise<{
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>
-					<NextImage src='/next.svg' alt='Next.js logo' width={180} height={38} priority />
+					<NextImage src='/next.svg' alt='Next.js logo' width={180} height={38} priority showInfo />
 					{/* <Image
 					className='dark:invert'
 					src='/next.svg'
