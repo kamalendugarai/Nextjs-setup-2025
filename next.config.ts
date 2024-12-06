@@ -5,6 +5,8 @@ import withPlaiceholder from '@plaiceholder/next';
  */
 
 const nextConfig: NextConfig = {
+	assetPrefix: '/',
+
 	/* config options here */
 	/**
 	 * You need to change base path in middleware.ts
@@ -53,11 +55,23 @@ const nextConfig: NextConfig = {
 			'react-icons/*',
 			'react-use',
 			'lodash-es'
-		]
+		],
+		serverActions: {
+			allowedOrigins: ['your-production-domain.com']
+		}
 	},
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
-	reactStrictMode: true
+	reactStrictMode: true,
+	async rewrites() {
+		return [
+			{
+				source: '/nl/with-locale-manual',
+				destination: '/nl/another',
+				locale: false
+			}
+		];
+	}
 	/**
 	 * This is needed only for react-pdf package
 	 */
