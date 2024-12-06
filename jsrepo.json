@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/jsrepo@1.17.5/schemas/project-config.json",
+  "repos": ["github/kamalendugarai/tryjsrepo"],
+  "includeTests": false,
+  "watermark": true,
+  "formatter": "prettier",
+  "paths": {
+    "*": "./src/blocks",
+    "blocks": "./src/blocks"
+  }
+}
