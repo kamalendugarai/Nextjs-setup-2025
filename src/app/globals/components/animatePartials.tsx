@@ -1,12 +1,17 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const AnimatePartials = ({ children, ...rest }: { children: React.ReactNode }) => {
+    const [uuid, generateUuid] = useState<string>("");
+    useEffect(()=>{
+        generateUuid(self.crypto.randomUUID());
+    },[])
     return (
         <AnimatePresence mode="wait">
             <motion.div
-                key={self.crypto.randomUUID()}
+                key={uuid}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

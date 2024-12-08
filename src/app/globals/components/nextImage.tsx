@@ -28,8 +28,22 @@ const NextImage = async ({ src = '', effect = 'blur', alt = '', width, height, l
 	const hexColor = color.hex;
 	const ultimWidth = width ? width : metadata.width;
 	const ultimHeight = height ? height : metadata.height;
+
+	/**
+	 * TailwindCSS doesn't support dynamic classes. The values shuld be hardcoded
+	 * in the class names so that TailwindCSS can compile them at the build time.
+	 * There is an option to use dynamic classes in TailwindCSS, called JIT (Just in Time).
+	 * This feature is currently in preview. Preview features are not covered by semantic versioning
+	 * and some details may change as we continue to refine them.
+	 * 
+	 * I have noted this on 8th of December 2024.
+	 * 
+	 * https://tailwindcss.com/docs/just-in-time-mode
+	 */
+
+
 	return (
-		<div className={`next-image relative w-[${ultimWidth}px] h-[${ultimHeight}px] bg-[${hexColor}]`}>
+		<div className={`next-image relative bg-[${hexColor}]}`} style={{width: `${ultimWidth}px`, height: `${showInfo ? ultimHeight<100 ? ultimHeight*2 : ultimHeight : ultimHeight}px`}}>
 			{
 				showInfo && <div className={`absolute top-0 left-0 w-full h-full list-disc items-center justify-center p-1 bg-black/[.7] overflow-scroll`}>
 					{
@@ -41,7 +55,7 @@ const NextImage = async ({ src = '', effect = 'blur', alt = '', width, height, l
 			}
 			<Image
 				src={src}
-				placeholder={effect}
+				placeholder={ultimWidth > 40 && ultimHeight > 40 ? effect:"empty"}
 				blurDataURL={base64}
 				alt={alt}
 				width={ultimWidth}
