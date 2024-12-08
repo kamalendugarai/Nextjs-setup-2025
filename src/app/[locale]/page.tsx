@@ -6,8 +6,8 @@ import {
 	AccordionTrigger
 } from '@/components/ui/accordion';
 
-import en from '@/app/[locale]/i18n/en';
-import fr from '@/app/[locale]/i18n/fr';
+import en from '@/app/[locale]/(unauthenticated)/i18n/en';
+import fr from '@/app/[locale]/(unauthenticated)/i18n/fr';
 import AnimatePartials from '@/app/globals/components/animatePartials';
 
 import NextImage from '@/app/globals/components/nextImage';
