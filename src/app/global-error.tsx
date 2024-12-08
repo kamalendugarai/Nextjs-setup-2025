@@ -36,11 +36,7 @@ export default function GlobalError({
 }) {
 	useEffect(() => {
 		console.log(error);
-<<<<<<< HEAD
-	}, []);
-=======
 	}, [error]);
->>>>>>> 9c94a04 (Fixed about content and corrected types)
 	return (
 		// global-error must include html and body tags
 		<html>
