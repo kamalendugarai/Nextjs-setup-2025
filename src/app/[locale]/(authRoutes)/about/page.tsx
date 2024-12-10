@@ -2,7 +2,7 @@ import AnimatePartials from '@/app/globals/components/animatePartials';
 import en from './i18n/en';
 import fr from './i18n/fr';
 
-export default async function Home({ params, searchParams }: { params: Promise<{ locale: string }>, searchParams: Promise<object>|undefined }) {
+export default async function Home({ params, searchParams }: { params: Promise<{ locale: string }>, searchParams: Promise<object> | undefined }) {
 	const { locale: lang } = await params
 
 	const locale = lang === 'fr' ? fr : en

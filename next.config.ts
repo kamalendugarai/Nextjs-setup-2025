@@ -1,8 +1,32 @@
 import type { NextConfig } from 'next';
 import withPlaiceholder from '@plaiceholder/next';
+import { readdirSync } from 'fs';
+
 /**
  * @type {import('next').NextConfig}
  */
+const authRoutes: string[] = [];
+const unAuthRoutes: string[] = [];
+const genericRoutes: string[] = [];
+
+const getDirectories = (source: string, holder: string[] = []) => {
+	const files = readdirSync(source, { withFileTypes: true, recursive: false });
+	files.forEach((file) => {
+		// console.log(file);
+		if (file.isDirectory()) {
+			holder.push(file.name);
+			/**
+			 * This is needed to recursively get all sub directories
+			 * */
+			// getDirectories(`${source}/${file.name}`, holder);
+		}
+	});
+	return holder;
+};
+
+getDirectories('./src/app/[locale]/(authRoutes)', authRoutes);
+getDirectories('./src/app/[locale]/(unAuthRoutes)/', unAuthRoutes);
+getDirectories('./src/app/[locale]/(genericRoutes)', genericRoutes);
 
 const nextConfig: NextConfig = {
 	assetPrefix: '/',
@@ -30,7 +54,9 @@ const nextConfig: NextConfig = {
 		minimumCacheTTL: 60
 	},
 	env: {
-		customKey: 'my-value'
+		AUTHROUTES: `${authRoutes.toString()}`,
+		UNAUTHROUTES: `${unAuthRoutes.toString()}`,
+		GENERICROUTES: `${genericRoutes.toString()}`
 	},
 	eslint: {
 		// Warning: This allows production builds to successfully complete even if

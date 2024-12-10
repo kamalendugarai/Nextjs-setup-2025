@@ -13,6 +13,13 @@ import i18nConfig from '../i18nConfig';
  */
 const PUBLIC_FILE = /\.(.*)$/;
 export function middleware(request: NextRequest) {
+	const authRoutes = process.env.AUTHROUTES?.split(',') || [];
+	const unAuthRoutes = process.env.UNAUTHROUTES?.split(',') || [];
+	const genericRoutes = process.env.GENERICROUTES?.split(',') || [];
+	const localRouter = i18nRouter(request, i18nConfig);
+	const currentLocale =
+		localRouter.headers.get('x-next-i18n-router-locale') || 'en';
+
 	if (
 		request.nextUrl.pathname.startsWith('/_next') ||
 		request.nextUrl.pathname.includes('/api/') ||
@@ -21,20 +28,60 @@ export function middleware(request: NextRequest) {
 		return;
 	}
 
-	if (request.nextUrl.locale === 'default') {
-		const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
+	const requestedRoute = request.nextUrl.pathname
+		.replace(`/${currentLocale}`, '')
+		.split('/')[1];
 
-		return NextResponse.redirect(
-			new URL(
-				`/${locale}${request.nextUrl.pathname}${request.nextUrl.search}`,
-				request.url
-			)
-		);
+	/**
+	 * Logic to access routes.
+	 * Auth routes are only accessible to logged in users.
+	 * UnAuth routes are only accessible to users that are not logged in.
+	 * Generic routes are accessible to all users.
+	 */
+
+	const loggedIn = false;
+	localRouter.headers.set('x-logged-in', loggedIn.toString());
+
+	if (requestedRoute) {
+		if (loggedIn) {
+			if (
+				authRoutes.includes(requestedRoute) === false &&
+				genericRoutes.includes(requestedRoute) === false &&
+				requestedRoute.includes('not-found') === false
+			) {
+				return NextResponse.redirect(new URL('/not-found', request.url));
+			}
+		} else {
+			if (
+				unAuthRoutes.includes(requestedRoute) === false &&
+				genericRoutes.includes(requestedRoute) === false &&
+				requestedRoute.includes('not-found') === false
+			) {
+				return NextResponse.redirect(new URL('/not-found', request.url));
+			}
+		}
+	} else {
+		/**
+		 * This is the case for root route (http://localhost:3000), with or without any locale.
+		 * If there is an locale set earlier then that is what is going to be used otherwise
+		 * 'en' set to be default locale.
+		 */
+		const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
+		if (loggedIn) {
+			/**
+			 * Route route is not accessible for logged in users, I have redirected it to the not-found page.
+			 * One should redirect it to the default after login page.
+			 */
+			return NextResponse.redirect(
+				new URL(
+					`/${locale}${request.nextUrl.pathname}${request.nextUrl.search}`,
+					request.url
+				)
+			);
+		}
 	}
 
-	const modifedResponse = i18nRouter(request, i18nConfig);
-
-	// Create a nonce for CSP
+	// Create a nonce for CSP, nonce should be different for each request
 	const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 	// script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' 'unsafe-inline';
 	// style-src 'self' 'nonce-${nonce}' 'unsafe-inline' ;
@@ -55,13 +102,13 @@ export function middleware(request: NextRequest) {
 		.replace(/\s{2,}/g, ' ')
 		.trim();
 
-	modifedResponse.headers.set('x-nonce', nonce);
-	modifedResponse.headers.set(
+	localRouter.headers.set('x-nonce', nonce);
+	localRouter.headers.set(
 		'Content-Security-Policy',
 		contentSecurityPolicyHeaderValue
 	);
 
-	return modifedResponse;
+	return localRouter;
 }
 
 /**

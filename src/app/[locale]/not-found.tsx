@@ -8,10 +8,11 @@ import {
 	CardHeader,
 	CardTitle
 } from '@/components/ui/card';
-
+import { headers } from "next/headers";
 import { Anton } from 'next/font/google';
 import { Button as Buton } from 'flowbite-react';
 import Link from 'next/link';
+
 
 const anton = Anton({
 	subsets: ['latin'],
@@ -19,7 +20,10 @@ const anton = Anton({
 	weight: '400'
 });
 
-const NotFound = () => {
+const NotFound = async () => {
+	const allHeaders = headers();
+	console.log(allHeaders, 'allHeaders');
+
 	return (
 		<main className='items-center justify-center flex min-h-screen'>
 			<Card className='max-w-[600px] flex-1 items-center text-center rounded-xl mb-2'>
@@ -48,5 +52,4 @@ const NotFound = () => {
 		</main>
 	);
 };
-
 export default NotFound;
