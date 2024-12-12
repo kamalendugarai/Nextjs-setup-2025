@@ -17,8 +17,7 @@ export function middleware(request: NextRequest) {
 	const unAuthRoutes = process.env.UNAUTHROUTES?.split(',') || [];
 	const genericRoutes = process.env.GENERICROUTES?.split(',') || [];
 	const localRouter = i18nRouter(request, i18nConfig);
-	const currentLocale =
-		localRouter.headers.get('x-next-i18n-router-locale') || 'en';
+	const currentLocale = localRouter.headers.get('x-next-i18n-router-locale');
 
 	if (
 		request.nextUrl.pathname.startsWith('/_next') ||
