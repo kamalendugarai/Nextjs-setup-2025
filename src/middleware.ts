@@ -38,9 +38,16 @@ export function middleware(request: NextRequest) {
 	 * Generic routes are accessible to all users.
 	 */
 
-	const loggedIn = false;
+	const loggedIn = true;
 	localRouter.headers.set('x-logged-in', loggedIn.toString());
+	console.log(
+		genericRoutes,
+		process.env.GENERICROUTES,
+		...genericRoutes,
 
+		'genericRoutes',
+		requestedRoute
+	);
 	if (requestedRoute) {
 		if (loggedIn) {
 			if (
