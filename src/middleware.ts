@@ -115,22 +115,26 @@ export function middleware(request: NextRequest) {
  * It specifies a set of request paths that should be matched, excluding certain paths such as
  * API routes, static files, image optimization files, and the favicon. The `missing` property
  * defines the required headers for the matched requests, in this case `next-router-prefetch` and `purpose=prefetch`.
+ *
+ * **************************************************************************************************************************
+ * THIS SETTING IS BEHAVING AS A BUG WHEN I AM TRYING TO USE IT WITH I18N THEN APPLICATION ROUTER IS NOT WORKING AS EXPECTED.
+ * **************************************************************************************************************************
  */
-export const config = {
-	matcher: [
-		/*
-		 * Match all request paths except for the ones starting with:
-		 * - api (API routes)
-		 * - _next/static (static files)
-		 * - _next/image (image optimization files)
-		 * - favicon.ico (favicon file)
-		 */
-		{
-			source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
-			missing: [
-				{ type: 'header', key: 'next-router-prefetch' },
-				{ type: 'header', key: 'purpose', value: 'prefetch' }
-			]
-		}
-	]
-};
+// export const config = {
+// 	matcher: [
+// 		/*
+// 		 * Match all request paths except for the ones starting with:
+// 		 * - api (API routes)
+// 		 * - _next/static (static files)
+// 		 * - _next/image (image optimization files)
+// 		 * - favicon.ico (favicon file)
+// 		 */
+// 		{
+// 			source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+// 			missing: [
+// 				{ type: 'header', key: 'next-router-prefetch' },
+// 				{ type: 'header', key: 'purpose', value: 'prefetch' }
+// 			]
+// 		}
+// 	]
+// };
