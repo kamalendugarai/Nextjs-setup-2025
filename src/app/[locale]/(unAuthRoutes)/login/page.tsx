@@ -14,20 +14,13 @@ import { Button } from "@/components/ui/button"
 
 import { Input } from "@/components/ui/input"
 import { Label } from '@/components/ui/label';
-
+import { onSubmit } from '../action';
 
 
 export default async function Home({ params }: { params: Promise<{ locale: string }>, searchParams: Promise<object> }) {
 	const { locale: lang } = await params
 
 	const locale = lang === 'fr' ? fr : en
-
-
-
-	const onSubmit = async (data: FormData) => {
-		"use server"
-		console.log(data)
-	}
 
 	return (
 
