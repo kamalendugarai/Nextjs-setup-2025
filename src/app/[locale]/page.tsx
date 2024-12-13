@@ -19,8 +19,8 @@ export default async function Home({ params, searchParams }: { params: Promise<{
 
 	const locale = lang === 'fr' ? fr : en
 
-	console.log({ locale })
-	console.log({ searchParams })
+	// console.log({ locale })
+	// console.log({ searchParams })
 
 	return (
 		<AnimatePartials>

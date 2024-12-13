@@ -39,15 +39,7 @@ export function middleware(request: NextRequest) {
 	 */
 
 	const loggedIn = true;
-	localRouter.headers.set('x-logged-in', loggedIn.toString());
-	console.log(
-		genericRoutes,
-		process.env.GENERICROUTES,
-		...genericRoutes,
-
-		'genericRoutes',
-		requestedRoute
-	);
+	
 	if (requestedRoute) {
 		if (loggedIn) {
 			if (
@@ -88,31 +80,31 @@ export function middleware(request: NextRequest) {
 	}
 
 	// Create a nonce for CSP, nonce should be different for each request
-	const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
-	// script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' 'unsafe-inline';
-	// style-src 'self' 'nonce-${nonce}' 'unsafe-inline' ;
-	const cspHeader = `
-		default-src 'self';
-		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' 'unsafe-inline';
-		style-src 'self' 'nonce-${nonce}' 'unsafe-inline' ;
-		img-src 'self' blob: data:;
-		font-src 'self';
-		object-src 'none';
-		base-uri 'self';
-		form-action 'self';
-		frame-ancestors 'none';
-		upgrade-insecure-requests;
-	`;
-	// Replace newline characters and spaces
-	const contentSecurityPolicyHeaderValue = cspHeader
-		.replace(/\s{2,}/g, ' ')
-		.trim();
+	// const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+	// // script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' 'unsafe-inline';
+	// // style-src 'self' 'nonce-${nonce}' 'unsafe-inline' ;
+	// const cspHeader = `
+	// 	default-src 'self';
+	// 	script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' 'unsafe-inline';
+	// 	style-src 'self' 'nonce-${nonce}' 'unsafe-inline' ;
+	// 	img-src 'self' blob: data:;
+	// 	font-src 'self';
+	// 	object-src 'none';
+	// 	base-uri 'self';
+	// 	form-action 'self';
+	// 	frame-ancestors 'none';
+	// 	upgrade-insecure-requests;
+	// `;
+	// // Replace newline characters and spaces
+	// const contentSecurityPolicyHeaderValue = cspHeader
+	// 	.replace(/\s{2,}/g, ' ')
+	// 	.trim();
 
-	localRouter.headers.set('x-nonce', nonce);
-	localRouter.headers.set(
-		'Content-Security-Policy',
-		contentSecurityPolicyHeaderValue
-	);
+	// localRouter.headers.set('x-nonce', nonce);
+	// localRouter.headers.set(
+	// 	'Content-Security-Policy',
+	// 	contentSecurityPolicyHeaderValue
+	// );
 
 	return localRouter;
 }

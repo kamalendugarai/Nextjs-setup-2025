@@ -1,6 +1,6 @@
 'use client'; // Error boundaries must be Client Components
 import type { Metadata } from 'next';
-import { ThemeModeScript } from 'flowbite-react';
+// import { ThemeModeScript } from 'flowbite-react';
 import localFont from 'next/font/local';
 import '@/app/[locale]/globals.css';
 import { useEffect } from 'react';
@@ -41,7 +41,7 @@ export default function GlobalError({
 		// global-error must include html and body tags
 		<html>
 			<head>
-				<ThemeModeScript />
+				{/* <ThemeModeScript /> */}
 			</head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

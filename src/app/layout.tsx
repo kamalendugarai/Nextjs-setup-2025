@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ThemeModeScript } from 'flowbite-react';
+// import { ThemeModeScript } from 'flowbite-react';
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import NeonCursor from '@/app/[locale]/utils/cursor';
 import localFont from 'next/font/local';
@@ -31,7 +31,7 @@ export default function RootLayout({
 	return (
 		<html>
 			<head>
-				<ThemeModeScript />
+				{/* <ThemeModeScript /> */}
 			</head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
