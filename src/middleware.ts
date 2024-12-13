@@ -38,7 +38,7 @@ export function middleware(request: NextRequest) {
 	 * Generic routes are accessible to all users.
 	 */
 
-	const loggedIn = true;
+	const loggedIn = false;
 
 	if (requestedRoute) {
 		if (loggedIn) {

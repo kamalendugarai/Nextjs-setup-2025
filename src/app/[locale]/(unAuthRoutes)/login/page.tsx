@@ -35,20 +35,20 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 						</CardHeader>
 						<CardContent>
 
-							<form action={onSubmit} className="w-2/3 space-y-6 w-full">
+							<form action={(onSubmit)} className="w-2/3 space-y-6 w-full">
 								<Label >
 									<div className='mb-3'>Email</div>
-									<Input type="email" name="email" className='mb-3 w-full' />
+									<Input type="email" name="email" className='mb-3 w-full placeholder-gray-500' />
 								</Label>
 								<Label>
 									<div className='mb-3 w-full'>Password</div>
 									<Input type="password" name="Password" />
 								</Label>
 
+								<Button type="submit" className='w-full placeholder-gray-500'>Login</Button>
 							</form>
 						</CardContent>
 						<CardFooter>
-							<Button type="submit" className='w-full'>Login</Button>
 						</CardFooter>
 					</Card>
 				</main>
