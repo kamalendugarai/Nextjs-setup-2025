@@ -137,6 +137,10 @@ body {
 	pointer-events: none;
   } */
 
+/*
+* Background pattern from:
+* https://www.magicpattern.design/tools
+*/
 .bg-texture {
 	background-color: #e5e5f7;
 	opacity: 0.8;
@@ -167,9 +171,11 @@ body {
 .loader {
 	width: 60px;
 	aspect-ratio: 1.154;
+
 	--c: #0000, #0f67b9 2deg 59deg, #0000 61deg;
 	--c1: conic-gradient(from 149deg at top, var(--c));
 	--c2: conic-gradient(from -31deg at bottom, var(--c));
+
 	background:
 		var(--c1) top,
 		var(--c1) bottom right,
@@ -179,6 +185,7 @@ body {
 	background-repeat: no-repeat;
 	animation: l37 1s infinite;
 }
+
 @keyframes l37 {
 	80%,
 	100% {
