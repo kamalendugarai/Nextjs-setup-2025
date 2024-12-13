@@ -34,7 +34,7 @@ export default function RootLayout({
 				{/* <ThemeModeScript /> */}
 			</head>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-texture`}>
 				{
 					/**
 					 * https://nuqs.47ng.com/docs/adapters#nextjs-app-router

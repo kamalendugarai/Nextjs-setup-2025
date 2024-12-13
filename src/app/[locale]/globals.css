@@ -95,7 +95,6 @@ body {
 
 /* This part of the css is for cursify.js cursor modification */
 
-
 .neon-cursor-container {
 	position: fixed;
 	top: 0;
@@ -104,9 +103,9 @@ body {
 	height: 100%;
 	pointer-events: none;
 	z-index: 9999;
-  }
-  
-  .cursor-main {
+}
+
+.cursor-main {
 	position: fixed;
 	width: 20px;
 	height: 20px;
@@ -114,10 +113,10 @@ body {
 	background: rgb(66 66 66 / 30%);
 	mix-blend-mode: screen;
 	pointer-events: none;
-	opacity:0.7
-  }
-  
-  .cursor-trail {
+	opacity: 0.7;
+}
+
+.cursor-trail {
 	position: fixed;
 	width: 40px;
 	height: 40px;
@@ -126,9 +125,9 @@ body {
 	border: 2px solid rgb(66 66 66 / 30%);
 	mix-blend-mode: screen;
 	pointer-events: none;
-  }
-  
-  /* .cursor-glow {
+}
+
+/* .cursor-glow {
 	position: fixed;
 	width: 60px;
 	height: 60px;
@@ -138,3 +137,29 @@ body {
 	pointer-events: none;
   } */
 
+.bg-texture {
+	background-color: #e5e5f7;
+	opacity: 0.8;
+	background-image: repeating-radial-gradient(
+			circle at 0 0,
+			transparent 0,
+			#e5e5f7 6px
+		),
+		repeating-linear-gradient(#c5c5c555, #c5c5c5);
+}
+
+.bg-dotted {
+	background-color: #e5e5f7;
+	opacity: 0.7;
+	background-image: linear-gradient(135deg, #c5c5c5 25%, transparent 25%),
+		linear-gradient(225deg, #c5c5c5 25%, transparent 25%),
+		linear-gradient(45deg, #c5c5c5 25%, transparent 25%),
+		linear-gradient(315deg, #c5c5c5 25%, #e5e5f7 25%);
+	background-position:
+		6px 0,
+		6px 0,
+		0 0,
+		0 0;
+	background-size: 6px 6px;
+	background-repeat: repeat;
+}
