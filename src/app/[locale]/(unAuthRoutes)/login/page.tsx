@@ -14,15 +14,30 @@ import { Button } from "@/components/ui/button"
 
 import { Input } from "@/components/ui/input"
 import { Label } from '@/components/ui/label';
-import baseQuery from '@/app/globals/functions/baseQuery';
+import { query } from '@/app/globals/functions/baseQuery';
 
-const output = await baseQuery({ url: 'https://jsonplaceholder.typicode.com/todos/1', method: 'get' })
+// const output = await baseQuery({ url: 'https://jsonplaceholder.typicode.com/todos/1', method: 'get' })
 // console.log(output)
 
 export default async function Home({ params }: { params: Promise<{ locale: string }>, searchParams: Promise<object> }) {
 	const { locale: lang } = await params
 
 	const locale = lang === 'fr' ? fr : en
+
+	const [data, err] = await query({
+
+		url: '/todos/1',
+		data: {
+			email: 'test@test.com',
+			password: '123456'
+		}
+
+	})
+
+	console.log("########################################")
+	console.log(data, 'data')
+	console.log(err, 'err')
+	console.log("########################################")
 
 	return (
 
