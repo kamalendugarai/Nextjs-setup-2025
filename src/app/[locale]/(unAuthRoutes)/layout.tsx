@@ -8,11 +8,13 @@ export default function UnAuthLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<Suspense fallback={
-			<div className="flex items-center justify-center h-screen w-screen"><span className="loader" /></div>
-		}>
+		// <Suspense fallback={
+		// 	<div className="flex items-center justify-center h-screen w-screen"><span className="loader" /></div>
+		// }>
+		<>
 			{children}
-		</Suspense>
+		</>
+		// </Suspense>
 
 	);
 }

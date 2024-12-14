@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 
 const AnimatePartials = ({ children, ...rest }: { children: React.ReactNode }) => {
     const [uuid, generateUuid] = useState<string>("");
-    useEffect(()=>{
+    useEffect(() => {
         generateUuid(self.crypto.randomUUID());
-    },[])
+    }, [])
     return (
         <AnimatePresence mode="wait">
             <motion.div
