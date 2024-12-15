@@ -83,7 +83,11 @@ const nextConfig: NextConfig = {
 			'lodash-es'
 		],
 		serverActions: {
-			allowedOrigins: ['your-production-domain.com']
+			allowedOrigins: [
+				process.env.NEXT_APP_API_BASE_URL
+					? process.env.NEXT_APP_API_BASE_URL
+					: ''
+			]
 		}
 	},
 	poweredByHeader: false,

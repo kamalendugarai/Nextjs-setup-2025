@@ -1,7 +1,7 @@
 "use server"
-import AnimatePartials from '@/app/globals/components/animatePartials';
-import en from './i18n/en';
-import fr from './i18n/fr';
+// import AnimatePartials from '@/app/globals/components/animatePartials';
+// import en from './i18n/en';
+// import fr from './i18n/fr';
 import {
     Card,
     CardContent,

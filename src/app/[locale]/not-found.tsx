@@ -22,7 +22,7 @@ const anton = Anton({
 
 const NotFound = async () => {
 	const allHeaders = headers();
-	// console.log(allHeaders, 'allHeaders');
+	console.log(allHeaders, 'allHeaders');
 
 	return (
 		<main className='items-center justify-center flex min-h-screen'>

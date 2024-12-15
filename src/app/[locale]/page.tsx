@@ -9,7 +9,7 @@ import {
 
 import en from '@/app/[locale]/i18n/en';
 import fr from '@/app/[locale]/i18n/fr';
-import AnimatePartials from '@/app/globals/components/animatePartials';
+// import AnimatePartials from '@/app/globals/components/animatePartials';
 
 import NextImage from '@/app/globals/components/nextImage';
 import Link from 'next/link';

@@ -1,5 +1,5 @@
 "use server"
-import AnimatePartials from '@/app/globals/components/animatePartials';
+// import AnimatePartials from '@/app/globals/components/animatePartials';
 import en from './i18n/en';
 import fr from './i18n/fr';
 import {
@@ -14,20 +14,18 @@ import { Button } from "@/components/ui/button"
 
 import { Input } from "@/components/ui/input"
 import { Label } from '@/components/ui/label';
-import { query } from '@/app/globals/functions/baseQuery';
+import { Query } from '@/app/globals/functions/baseQuery';
 
-// const output = await baseQuery({ url: 'https://jsonplaceholder.typicode.com/todos/1', method: 'get' })
-// console.log(output)
 
 export default async function Home({ params }: { params: Promise<{ locale: string }>, searchParams: Promise<object> }) {
 	const { locale: lang } = await params
 
 	const locale = lang === 'fr' ? fr : en
 
-	const [data, err] = await query({
-
+	const [data, err] = await Query({
 		url: '/todos/1',
 		data: {
+			locale,
 			email: 'test@test.com',
 			password: '123456'
 		}

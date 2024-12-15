@@ -11,7 +11,8 @@ import i18nConfig from '../i18nConfig';
  * @param request - The incoming Next.js request object.
  * @returns A modified response object with the necessary security headers.
  */
-const PUBLIC_FILE = /\.(.*)$/;
+const PUBLIC_FILE = 
+/\.(.*)$/;
 export function middleware(request: NextRequest) {
 	const authRoutes = process.env.AUTHROUTES?.split(',') || [];
 	const unAuthRoutes = process.env.UNAUTHROUTES?.split(',') || [];
