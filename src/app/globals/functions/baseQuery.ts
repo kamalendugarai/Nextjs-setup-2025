@@ -116,6 +116,9 @@ axios.interceptors.request.use(
 		if (accessToken) {
 			const payload = decryptToken(accessToken.value);
 			config.headers['Authorization'] = `Bearer ${payload}`;
+		} else {
+			console.log('Access Token Not Found! *** redirecting to login page');
+			redirect('/login');
 		}
 		return config;
 	},
@@ -218,13 +221,13 @@ const authedProcedure = createServerActionProcedure().handler(async () => {
 	try {
 		const accessToken = cookieStore.get('accessToken');
 		if (!accessToken) {
-			localStorage.clear();
-			redirect('/login');
-			throw new Error('Access Token Not Found!');
+			console.log('Access Token Not Found!');
+			// redirect('/login');
 		}
 	} catch (error: unknown) {
 		console.log(error);
-		throw new Error('There is an erro!');
+
+		// throw new Error('There is an erro!');
 	}
 });
 
@@ -245,10 +248,10 @@ export const Query = authedProcedure
 				data: JSON.stringify(input.data),
 				method: 'get'
 			});
-			if (!response) {
-				throw new Error('No response received');
-			}
-			const data = await response.data;
+			// if (!response) {
+			// 	throw new Error('No response received');
+			// }
+			const data = await response?.data;
 			return data;
 		} catch (error) {
 			return {

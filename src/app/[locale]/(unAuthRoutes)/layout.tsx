@@ -23,5 +23,3 @@ export default function UnAuthLayout({
 
 	);
 }
-
-/* HTML: <div class="loader"></div> */
