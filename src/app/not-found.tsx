@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card';
 
 import { Anton } from 'next/font/google';
-import { Button as Buton } from 'flowbite-react';
+// import { Button as Buton } from 'flowbite-react';
 import Link from 'next/link';
 
 const anton = Anton({
@@ -38,7 +38,7 @@ const NotFound = () => {
 					<form>
 						<div className='grid w-full items-center gap-4'>
 							<div className='flex flex-col space-y-1.5'></div>
-							<Buton>Click me</Buton>
+							<span>Click me</span>
 							<Link href='/'>Home</Link>
 						</div>
 					</form>
