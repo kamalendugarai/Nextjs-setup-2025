@@ -35,9 +35,7 @@ let autoLogout: NodeJS.Timeout;
 const encryptToken = async (token: string) => {
 	try {
 		if (token) {
-			const secret = new TextEncoder().encode(
-				process.env.NEXT_PUBLIC_JWT_SECRET
-			);
+			const secret = new TextEncoder().encode(process.env.NEXT_ENCRYPTION_SALT);
 			const { iat, exp } = jwtDecode(token);
 			const cookieStore = await cookies();
 			if (exp) {
@@ -91,7 +89,7 @@ const encryptToken = async (token: string) => {
  */
 const decryptToken = async (token: string) => {
 	try {
-		const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+		const secret = new TextEncoder().encode(process.env.NEXT_ENCRYPTION_SALT);
 		const { payload } = await jwtVerify(token, secret);
 		return payload;
 	} catch (error) {

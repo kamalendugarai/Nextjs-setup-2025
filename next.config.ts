@@ -56,6 +56,8 @@ const nextConfig: NextConfig = {
 		minimumCacheTTL: 60
 	},
 	env: {
+		// Cookies are always encrypted, this settings is for localStorage and sessionStorage
+		ENCRYPTSTORAGE: 'true',
 		AUTHROUTES: `${authRoutes.toString()}`,
 		UNAUTHROUTES: `${unAuthRoutes.toString()}`,
 		GENERICROUTES: `${genericRoutes.toString()}`

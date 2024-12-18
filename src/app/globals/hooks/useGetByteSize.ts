@@ -1,4 +1,4 @@
-import { getByteSize } from '@/app/globals/functions/getByteSize';
+import { getByteSize } from '@/app/[locale]/utils/getByteSize';
 
 const getByteSizeHook = () => {
 	return getByteSize;
