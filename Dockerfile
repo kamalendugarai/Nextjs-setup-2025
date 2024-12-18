@@ -1,20 +1,20 @@
-FROM ubuntu:24.04 AS base
-RUN apt-get update
-RUN apt install -y curl
-RUN export NVM_DIR="$HOME/.nvm"
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+FROM node:21.7.3-alpine
+# RUN apt-get update
+# RUN apt install -y curl
+# RUN export NVM_DIR="$HOME/.nvm"
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 # # RUN . "$NVM_DIR/nvm.sh"
 # RUN /bin/bash -ic "source ~/.bashrc"
 # RUN echo nvm
 
-ENV NVM_DIR=/usr/local/nvm
-ENV NODE_VERSION=v20.12.2
+# ENV NVM_DIR=/usr/local/nvm
+# ENV NODE_VERSION=v20.12.2
 
-RUN mkdir -p $NVM_DIR && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use --delete-prefix $NODE_VERSION"
+# RUN mkdir -p $NVM_DIR && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+# RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use --delete-prefix $NODE_VERSION"
 
-ENV NODE_PATH=$NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules
-ENV PATH=$NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
+# ENV NODE_PATH=$NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules
+# ENV PATH=$NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
 
 
 
@@ -24,11 +24,11 @@ WORKDIR /app
 COPY . .
 
 RUN node -v
-RUN npm ci --force
+RUN npm ci
 RUN npm run build
-RUN cp -r public .next/standalone/
-RUN cp -r .next/static .next/standalone/.next/
-
+RUN npm install pm2 -g
+EXPOSE 3000
+CMD ["pm2-runtime", "start", "npm", "--", "start"]
 
 
 
@@ -46,14 +46,13 @@ RUN cp -r .next/static .next/standalone/.next/
 
 
     
-EXPOSE 3000
 
-ENV PORT=3000
-ENV HOSTNAME="172.17.0.3"
+# ENV PORT=3000
+# ENV HOSTNAME="172.17.0.3"
 
-# # server.js is created by next build from the standalone output
-# https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD ["node", ".next/standalone/server.js"]
+# # # server.js is created by next build from the standalone output
+# # https://nextjs.org/docs/pages/api-reference/next-config-js/output
+# CMD ["node", ".next/standalone/server.js"]
 
 
 # # syntax=docker.io/docker/dockerfile:1

@@ -64,15 +64,21 @@ const Storage = {
 						);
 					}
 					// console.log(tis.doEncrypt(el.key, 'key'), tis.doEncrypt(el.value));
+					let index;
+					if (el && el.type) {
+						index = el.type;
+					} else {
+						index = this.type;
+					}
 					returnedItem = Promise.resolve().then(() => {
 						// (window as { [key: string]: any })["DataManager"] as string;
 						(window as { [key: string]: any })[
-							el.type ? el.type : this.type
+							index as keyof typeof window
 						].setItem(
 							this.doEncrypt(el.key.toString(), 'key'),
 							this.doEncrypt(el.value)
 						);
-						returnedItem = true;
+						return true;
 					});
 				} else {
 					// console.error(
