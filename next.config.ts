@@ -12,11 +12,13 @@ const genericRoutes: string[] = [];
 const getDirectories = (source: string, holder: string[] = []) => {
 	const files = readdirSync(source, { withFileTypes: true, recursive: false });
 	files.forEach((file) => {
-		// console.log(file);
 		if (file.isDirectory()) {
 			holder.push(file.name);
 			/**
-			 * This is needed to recursively get all sub directories
+			 * This is needed to recursively get all sub directories.
+			 * In our case we do not need this because we are not using
+			 * any sub directories. The scope is there to use if needed
+			 * in the future.
 			 * */
 			// getDirectories(`${source}/${file.name}`, holder);
 		}

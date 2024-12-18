@@ -8,7 +8,7 @@ import {
 	CardHeader,
 	CardTitle
 } from '@/components/ui/card';
-import { headers } from "next/headers";
+// import { headers } from "next/headers";
 import { Anton } from 'next/font/google';
 // import { Button as Buton } from 'flowbite-react';
 import Link from 'next/link';
@@ -21,8 +21,8 @@ const anton = Anton({
 });
 
 const NotFound = async () => {
-	const allHeaders = headers();
-	console.log(allHeaders, 'allHeaders');
+	// const allHeaders = headers();
+	// show.log(allHeaders, 'allHeaders');
 
 	return (
 		<main className='items-center justify-center flex min-h-screen'>

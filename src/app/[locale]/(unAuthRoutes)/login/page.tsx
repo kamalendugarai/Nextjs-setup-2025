@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from '@/components/ui/label';
 import { Query } from '@/app/globals/functions/baseQuery';
+import show from '@/app/globals/functions/console';
 
 
 export default async function Home({ params }: { params: Promise<{ locale: string }>, searchParams: Promise<object> }) {
@@ -31,11 +32,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 		}
 
 	})
-
-	console.log("########################################")
-	console.log(data, 'data')
-	console.log(err, 'err')
-	console.log("########################################")
+	show.log("########################################")
+	show.log(data, 'data')
+	show.log(err, 'err')
+	show.log("########################################")
 
 	return (
 

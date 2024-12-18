@@ -28,8 +28,6 @@ export function middleware(request: NextRequest) {
 		return;
 	}
 
-	console.log(request.nextUrl.pathname, 'request.nextUrl.pathname');
-
 	const requestedRoute = request.nextUrl.pathname
 		.replace(`/${currentLocale}`, '')
 		.split('/')[1];

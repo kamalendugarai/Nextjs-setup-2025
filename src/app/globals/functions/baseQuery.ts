@@ -6,6 +6,7 @@ import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 import { createServerActionProcedure } from 'zsa';
 import z from 'zod';
+import show from './console';
 
 import { redirect } from 'next/navigation';
 
@@ -112,12 +113,14 @@ const decryptToken = async (token: string) => {
 axios.interceptors.request.use(
 	async (config) => {
 		const cookieStore = await cookies();
+		config.headers.set({ 'Content-Type': 'application/json' });
 		const accessToken = cookieStore.get('accesstoken');
 		if (accessToken) {
 			const payload = decryptToken(accessToken.value);
-			config.headers['Authorization'] = `Bearer ${payload}`;
+			// config.headers['Authorization'] = `Bearer ${payload}`;
+			config.headers.set({ Authorization: `Bearer ${payload}` });
 		} else {
-			console.log('Access Token Not Found! *** redirecting to login page');
+			show.log('Access Token Not Found! *** redirecting to login page');
 			redirect('/login');
 		}
 		return config;
@@ -183,7 +186,7 @@ export const baseQuery = async ({
 	signal
 }: baseQueryProps) => {
 	try {
-		const response = axios({
+		const response = await axios({
 			baseURL: process.env.NEXT_APP_API_BASE_URL,
 			url,
 			method,
@@ -196,15 +199,20 @@ export const baseQuery = async ({
 				(data) => {
 					return data;
 				}
+			],
+			transformResponse: [
+				(data) => {
+					return data;
+				}
 			]
 		});
 
 		return response;
 	} catch (e) {
 		console.log(e);
+		throw e;
 	}
 };
-
 /**
  * authedProcedure is a server action procedure that runs just before the server action.
  * You can do important tasks which should run before the server action, In our case,
@@ -221,7 +229,7 @@ const authedProcedure = createServerActionProcedure().handler(async () => {
 	try {
 		const accessToken = cookieStore.get('accessToken');
 		if (!accessToken) {
-			console.log('Access Token Not Found!');
+			show.log('Access Token Not Found!');
 			// redirect('/login');
 		}
 	} catch (error: unknown) {
@@ -241,7 +249,7 @@ export const Query = authedProcedure
 	)
 	.handler(async ({ input, ctx }) => {
 		// const { accessToken } = ctx;
-		console.log(ctx, 'This is coming from authProcedure');
+		show.log(ctx, 'This is coming from authProcedure');
 		try {
 			const response = await baseQuery({
 				url: input.url,

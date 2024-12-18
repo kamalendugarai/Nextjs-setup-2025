@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import '@/app/[locale]/globals.css';
 import { useEffect } from 'react';
+import show from './globals/functions/console';
 
 const geistSans = localFont({
 	src: './[locale]/fonts/GeistVF.woff',
@@ -35,10 +36,12 @@ export default function GlobalError({
 	reset: () => void;
 }) {
 	useEffect(() => {
-		console.log(error);
+		show.log(error);
 	}, [error]);
 	return (
-		// global-error must include html and body tags
+		/**
+		 * global-error must include html and body tags. This is a requirement of Next.js.
+		 **/
 		<html>
 			<head>
 				{/* <ThemeModeScript /> */}
