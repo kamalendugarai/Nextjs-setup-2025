@@ -44,7 +44,7 @@ const encryptToken = async (token: string) => {
 				}
 				autoLogout = setTimeout(
 					() => {
-						cookieStore.delete('accessToken');
+						cookieStore.delete('accesstoken');
 						redirect('/login');
 					},
 					Math.min(((exp as number) - (iat as number)) / 1000)
@@ -149,9 +149,10 @@ axios.interceptors.response.use(
 			const { accessToken } = response.data;
 			if (accessToken) {
 				encryptToken(accessToken);
+				cookieStore.set('accesstoken', accessToken);
 			}
 		} else if (response.status === 401) {
-			cookieStore.delete('accessToken');
+			cookieStore.delete('accesstoken');
 			redirect('/login');
 		}
 		return response;
@@ -225,7 +226,7 @@ export const baseQuery = async ({
 const authedProcedure = createServerActionProcedure().handler(async () => {
 	const cookieStore = await cookies();
 	try {
-		const accessToken = cookieStore.get('accessToken');
+		const accessToken = cookieStore.get('accesstoken');
 		if (!accessToken) {
 			show.log('Access Token Not Found!');
 			// redirect('/login');

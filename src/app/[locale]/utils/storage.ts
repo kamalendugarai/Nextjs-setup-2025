@@ -1,5 +1,5 @@
 import CryptoJS from 'crypto-js';
-import show from '@/app/globals/functions/console';
+// import show from '@/app/globals/functions/console';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 const Storage = {
