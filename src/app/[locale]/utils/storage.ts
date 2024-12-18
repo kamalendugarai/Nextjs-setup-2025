@@ -4,15 +4,15 @@ import CryptoJS from 'crypto-js';
 
 const Storage = {
 	defaultSalt: 'EkdxOTaM*pwy0@AwI8e2',
-	enviro: process.env.ENCRYPTSTORAGE?.trim() || 'false',
-	type: process.env.ENCRYPTSTORAGE?.trim() || 'localStorage',
+	enviro: !!process.env.ENCRYPTSTORAGE?.trim() || 'false',
+	type: !!process.env.ENCRYPTSTORAGE?.trim() || 'localStorage',
 	doEncrypt: function doEncrypt(elem: string, recog?: string, salt?: string) {
 		if (/true/i.test(this.enviro.toString()) === true) {
 			if (recog?.toLowerCase() === 'key') {
 				return CryptoJS.SHA256(elem).toString();
 			}
 			const salty =
-				salt || process.env.REACT_APP_ENCRYPTION_SALT || this.defaultSalt;
+				salt || process.env.NEXT_ENCRYPTION_SALT || this.defaultSalt;
 			const encrypted = CryptoJS.AES.encrypt(elem, salty).toString();
 
 			return encrypted;
@@ -22,7 +22,7 @@ const Storage = {
 	doDecrypt: function doDecrypt(elem: string, salt?: string) {
 		if (/true/i.test(this.enviro.toString()) === true) {
 			const salty =
-				salt || process.env.REACT_APP_ENCRYPTION_SALT || this.defaultSalt;
+				salt || process.env.NEXT_ENCRYPTION_SALT || this.defaultSalt;
 			return CryptoJS.AES.decrypt(elem, salty).toString(CryptoJS.enc.Utf8);
 		}
 		return elem;
