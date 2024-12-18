@@ -1,7 +1,39 @@
-import { withPayload } from "@payloadcms/next/withPayload";
+import { withPayload } from '@payloadcms/next/withPayload';
 import type { NextConfig } from 'next';
+import withPlaiceholder from '@plaiceholder/next';
+import { readdirSync } from 'fs';
+
+/**
+ * @type {import('next').NextConfig}
+ */
+const authRoutes: string[] = [];
+const unAuthRoutes: string[] = [];
+const genericRoutes: string[] = [];
+
+const getDirectories = (source: string, holder: string[] = []) => {
+	const files = readdirSync(source, { withFileTypes: true, recursive: false });
+	files.forEach((file) => {
+		if (file.isDirectory()) {
+			holder.push(file.name);
+			/**
+			 * This is needed to recursively get all sub directories.
+			 * In our case we do not need this because we are not using
+			 * any sub directories. The scope is there to use if needed
+			 * in the future.
+			 * */
+			// getDirectories(`${source}/${file.name}`, holder);
+		}
+	});
+	return holder;
+};
+
+getDirectories('./src/app/[locale]/(authRoutes)', authRoutes);
+getDirectories('./src/app/[locale]/(unAuthRoutes)/', unAuthRoutes);
+getDirectories('./src/app/[locale]/(genericRoutes)', genericRoutes);
 
 const nextConfig: NextConfig = {
+	assetPrefix: '/',
+
 	/* config options here */
 	/**
 	 * You need to change base path in middleware.ts
@@ -19,8 +51,17 @@ const nextConfig: NextConfig = {
 		buildActivity: true,
 		buildActivityPosition: 'bottom-right'
 	},
+	images: {
+		formats: ['image/avif', 'image/webp'],
+		// Should read https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
+		minimumCacheTTL: 60
+	},
 	env: {
-		customKey: 'my-value'
+		// Cookies are always encrypted, this settings is for localStorage and sessionStorage
+		ENCRYPTSTORAGE: 'true',
+		AUTHROUTES: `${authRoutes.toString()}`,
+		UNAUTHROUTES: `${unAuthRoutes.toString()}`,
+		GENERICROUTES: `${genericRoutes.toString()}`
 	},
 	eslint: {
 		// Warning: This allows production builds to successfully complete even if
@@ -45,11 +86,27 @@ const nextConfig: NextConfig = {
 			'react-icons/*',
 			'react-use',
 			'lodash-es'
-		]
+		],
+		serverActions: {
+			allowedOrigins: [
+				process.env.NEXT_APP_API_BASE_URL
+					? process.env.NEXT_APP_API_BASE_URL
+					: ''
+			]
+		}
 	},
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
-	reactStrictMode: true
+	reactStrictMode: true,
+	async rewrites() {
+		return [
+			{
+				source: '/nl/with-locale-manual',
+				destination: '/nl/another',
+				locale: false
+			}
+		];
+	}
 	/**
 	 * This is needed only for react-pdf package
 	 */
@@ -65,4 +122,4 @@ const nextConfig: NextConfig = {
 	// 	localeDetection: false
 	// }
 };
-export default withPayload(nextConfig);
+export default withPlaiceholder(withPayload(nextConfig));

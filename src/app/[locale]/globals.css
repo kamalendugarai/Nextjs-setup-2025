@@ -37,6 +37,14 @@ body {
 		--chart-4: 43 74% 66%;
 		--chart-5: 27 87% 67%;
 		--radius: 0.5rem;
+		--sidebar-background: 0 0% 98%;
+		--sidebar-foreground: 240 5.3% 26.1%;
+		--sidebar-primary: 240 5.9% 10%;
+		--sidebar-primary-foreground: 0 0% 98%;
+		--sidebar-accent: 240 4.8% 95.9%;
+		--sidebar-accent-foreground: 240 5.9% 10%;
+		--sidebar-border: 220 13% 91%;
+		--sidebar-ring: 217.2 91.2% 59.8%;
 	}
 
 	.dark {
@@ -64,6 +72,14 @@ body {
 		--chart-3: 30 80% 55%;
 		--chart-4: 280 65% 60%;
 		--chart-5: 340 75% 55%;
+		--sidebar-background: 240 5.9% 10%;
+		--sidebar-foreground: 240 4.8% 95.9%;
+		--sidebar-primary: 224.3 76.3% 48%;
+		--sidebar-primary-foreground: 0 0% 100%;
+		--sidebar-accent: 240 3.7% 15.9%;
+		--sidebar-accent-foreground: 240 4.8% 95.9%;
+		--sidebar-border: 240 3.7% 15.9%;
+		--sidebar-ring: 217.2 91.2% 59.8%;
 	}
 }
 
@@ -79,7 +95,6 @@ body {
 
 /* This part of the css is for cursify.js cursor modification */
 
-
 .neon-cursor-container {
 	position: fixed;
 	top: 0;
@@ -88,9 +103,9 @@ body {
 	height: 100%;
 	pointer-events: none;
 	z-index: 9999;
-  }
-  
-  .cursor-main {
+}
+
+.cursor-main {
 	position: fixed;
 	width: 20px;
 	height: 20px;
@@ -98,10 +113,10 @@ body {
 	background: rgb(66 66 66 / 30%);
 	mix-blend-mode: screen;
 	pointer-events: none;
-	opacity:0.7
-  }
-  
-  .cursor-trail {
+	opacity: 0.7;
+}
+
+.cursor-trail {
 	position: fixed;
 	width: 40px;
 	height: 40px;
@@ -110,9 +125,9 @@ body {
 	border: 2px solid rgb(66 66 66 / 30%);
 	mix-blend-mode: screen;
 	pointer-events: none;
-  }
-  
-  /* .cursor-glow {
+}
+
+/* .cursor-glow {
 	position: fixed;
 	width: 60px;
 	height: 60px;
@@ -122,3 +137,62 @@ body {
 	pointer-events: none;
   } */
 
+/*
+* Background pattern from:
+* https://www.magicpattern.design/tools
+*/
+.bg-texture {
+	background-color: #e5e5f7;
+	opacity: 0.8;
+	background-image: repeating-radial-gradient(
+			circle at 0 0,
+			transparent 0,
+			#e5e5f7 6px
+		),
+		repeating-linear-gradient(#c5c5c555, #c5c5c5);
+}
+
+.bg-dotted {
+	background-color: #e5e5f7;
+	opacity: 0.7;
+	background-image: linear-gradient(135deg, #c5c5c5 25%, transparent 25%),
+		linear-gradient(225deg, #c5c5c5 25%, transparent 25%),
+		linear-gradient(45deg, #c5c5c5 25%, transparent 25%),
+		linear-gradient(315deg, #c5c5c5 25%, #e5e5f7 25%);
+	background-position:
+		6px 0,
+		6px 0,
+		0 0,
+		0 0;
+	background-size: 6px 6px;
+	background-repeat: repeat;
+}
+
+.loader {
+	width: 60px;
+	aspect-ratio: 1.154;
+
+	--c: #0000, #0f67b9 2deg 59deg, #0000 61deg;
+	--c1: conic-gradient(from 149deg at top, var(--c));
+	--c2: conic-gradient(from -31deg at bottom, var(--c));
+
+	background:
+		var(--c1) top,
+		var(--c1) bottom right,
+		var(--c2) bottom,
+		var(--c1) bottom left;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+	animation: l37 1s infinite;
+}
+
+@keyframes l37 {
+	80%,
+	100% {
+		background-position:
+			bottom right,
+			bottom left,
+			bottom,
+			top;
+	}
+}
