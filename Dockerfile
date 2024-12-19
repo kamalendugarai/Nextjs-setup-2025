@@ -18,7 +18,7 @@ FROM node:21.7.3-alpine
 
 
 
-
+ENV HOSTNAME=0.0.0.0
 
 WORKDIR /app
 COPY . .
@@ -28,7 +28,7 @@ RUN npm ci
 RUN npm run build
 RUN npm install pm2 -g
 EXPOSE 3000
-CMD ["pm2-runtime", "start", "npm", "--", "start"]
+CMD ["pm2-runtime", "start", "npm", "--", "dev"]
 
 
 
