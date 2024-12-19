@@ -1,0 +1,10 @@
+.git
+.husky
+.vscode
+.results
+.gitignore
+.editorconfig
+scripts
+*Dockerfile*
+node_modules
+build

@@ -64,15 +64,16 @@ const Storage = {
 						);
 					}
 					// console.log(tis.doEncrypt(el.key, 'key'), tis.doEncrypt(el.value));
+
 					returnedItem = Promise.resolve().then(() => {
 						// (window as { [key: string]: any })["DataManager"] as string;
 						(window as { [key: string]: any })[
-							el.type ? el.type : this.type
+							(el.type ? el.type : this.type) as keyof typeof window
 						].setItem(
 							this.doEncrypt(el.key.toString(), 'key'),
 							this.doEncrypt(el.value)
 						);
-						returnedItem = true;
+						return true;
 					});
 				} else {
 					// console.error(
@@ -112,7 +113,7 @@ const Storage = {
 				}
 			}
 			const item = (window as { [key: string]: any })[
-				tipe || Storage.type
+				(tipe || Storage.type) as keyof typeof window
 			].getItem(Storage.doEncrypt(key, 'key'));
 			if (item) {
 				if (promise) {
@@ -153,13 +154,13 @@ const Storage = {
 			}
 			const eItem = this.doEncrypt(key, 'key');
 			const item = (window as { [key: string]: any })[
-				tipe || this.type
+				(tipe || this.type) as keyof typeof window
 			].getItem(eItem);
 			if (item) {
 				return Promise.resolve().then(() =>
-					(window as { [key: string]: any })[tipe || this.type].removeItem(
-						eItem
-					)
+					(window as { [key: string]: any })[
+						(tipe || this.type) as keyof typeof window
+					].removeItem(eItem)
 				);
 			}
 			return Promise.reject(
