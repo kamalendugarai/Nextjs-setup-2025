@@ -5,6 +5,7 @@
 .gitignore
 .editorconfig
 scripts
-*Dockerfile*
+_Dockerfile_
 node_modules
 build
+\*.log

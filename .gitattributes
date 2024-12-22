@@ -1,0 +1,4 @@
+.env merge=ours
+robots.txt merge=ours
+public/.htaccess merge=ours
+public/robots.txt merge=ours
