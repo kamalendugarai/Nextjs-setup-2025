@@ -8,6 +8,7 @@
     "npm": "=10.5.0"
   },
   "scripts": {
+    "update-packages": "rm -rf node_modules package-lock.json && npx -y npm-check-updates -u && npm install",
     "gdown": "pip install gdown",
     "instgdown": "echo '****************************************' && echo 'Current Python Version:\\033[1;33m' $(python --version) && echo '\\033[0;37mRequired Python Version: \\033[1;33mPython' $(cat ./.python-version) && echo '' && echo '\\033[0;37mInstalling \\033[1;33mgdown\\033[0;37m' && echo '\\033[0;37m****************************************' && echo '\\033[0;37mInstalling \\033[1;33mgdown\\033[0;37m' && npm run gdown -s",
     "installgdown": "npm run instgdown -s",
@@ -107,6 +108,7 @@
     "husky": "^9.1.6",
     "knip": "^5.37.0",
     "lint-staged": "^15.2.10",
+    "nodemon": "^3.1.9",
     "postcss": "^8.4.49",
     "prettier": "^3.3.3",
     "stylelint": "^16.10.0",
