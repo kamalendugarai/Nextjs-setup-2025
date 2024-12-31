@@ -27,7 +27,8 @@
     "prepare": "husky install",
     "lint:css": "stylelint --fix '**/*.css'",
     "pretest": "npm run lint:css",
-    "gitformatstaged": "git-format-staged -f 'prettier --ignore-unknown --stdin --stdin-filepath \"{}\"' ."
+    "gitformatstaged": "git-format-staged -f 'prettier --ignore-unknown --stdin --stdin-filepath \"{}\"' .",
+    "deven": "nodemon --watch \"src\" --exec \"npm run dev\""
   },
   "dependencies": {
     "@builder.io/partytown": "^0.10.2",

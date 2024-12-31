@@ -9,3 +9,6 @@ _Dockerfile_
 node_modules
 build
 \*.log
+*.bk
+*.bkp
+*.swp
