@@ -18,7 +18,8 @@ ENV NODE_PATH=$NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules
 ENV PATH=$NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
 
 
-
+EXPOSE 3000
+EXPOSE 9229
 
 
 WORKDIR /app
