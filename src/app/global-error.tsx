@@ -1,10 +1,12 @@
-'use client'; // Error boundaries must be Client Components
+'use client';
+
+// Error boundaries must be Client Components
+import show from './globals/functions/console';
+import '@/app/[locale]/globals.css';
 import type { Metadata } from 'next';
 // import { ThemeModeScript } from 'flowbite-react';
 import localFont from 'next/font/local';
-import '@/app/[locale]/globals.css';
 import { useEffect } from 'react';
-import show from './globals/functions/console';
 
 const geistSans = localFont({
 	src: './[locale]/fonts/GeistVF.woff',
@@ -43,9 +45,7 @@ export default function GlobalError({
 		 * global-error must include html and body tags. This is a requirement of Next.js.
 		 **/
 		<html>
-			<head>
-				{/* <ThemeModeScript /> */}
-			</head>
+			<head>{/* <ThemeModeScript /> */}</head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<h2>Something went wrong!</h2>

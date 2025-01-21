@@ -3,9 +3,5 @@ export default function GenericLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	return (
-		<>
-			{children}
-		</>
-	);
+	return <>{children}</>;
 }

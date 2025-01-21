@@ -1,7 +1,7 @@
+import { getByteSize } from './getByteSize';
+import show from '@/app/globals/functions/console';
 import CryptoJS from 'crypto-js';
 import { cookies } from 'next/headers';
-import show from '@/app/globals/functions/console';
-import { getByteSize } from './getByteSize';
 
 const doEncrypt = async (elem: string, recog?: string, salt?: string) => {
 	if (!!process.env.ENCRYPTSTORAGE?.trim()) {

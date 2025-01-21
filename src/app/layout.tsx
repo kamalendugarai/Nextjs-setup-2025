@@ -1,11 +1,9 @@
-import type { Metadata } from 'next';
-// import { ThemeModeScript } from 'flowbite-react';
-import { NuqsAdapter } from 'nuqs/adapters/next/app'
-import NeonCursor from '@/app/[locale]/utils/cursor';
-import localFont from 'next/font/local';
 import '@/app/[locale]/globals.css';
-
-
+import NeonCursor from '@/app/[locale]/utils/cursor';
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+// import { ThemeModeScript } from 'flowbite-react';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 const geistSans = localFont({
 	src: './[locale]/fonts/GeistVF.woff',
@@ -30,20 +28,14 @@ export default function RootLayout({
 }>) {
 	return (
 		<html>
-			<head>
-				{/* <ThemeModeScript /> */}
-			</head>
+			<head>{/* <ThemeModeScript /> */}</head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-texture`}>
-				{
-					/**
-					 * https://nuqs.47ng.com/docs/adapters#nextjs-app-router
-					 * Type-safe search params state manager for React
-					 *  */
-				}
-				<NuqsAdapter>
-					{children}
-				</NuqsAdapter>
+				{/**
+				 * https://nuqs.47ng.com/docs/adapters#nextjs-app-router
+				 * Type-safe search params state manager for React
+				 *  */}
+				<NuqsAdapter>{children}</NuqsAdapter>
 				<NeonCursor />
 			</body>
 		</html>

@@ -1,11 +1,15 @@
 {
   "useTabs": true,
-  "semi":true,
-  "trailingComma":"none",
+  "semi": true,
+  "trailingComma": "none",
   "singleQuote": true,
   "jsxSingleQuote": true,
   "bracketSameLine": true,
   "tabWidth": 2,
+  "importOrder": ["/*/.(js)$/", "/*/.(ts)$/", "/*/.(jsx)$/", "/*/.(tsx)$/"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "overrides": [
     {
       "files": "*.md",

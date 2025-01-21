@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import {
 	Card,
 	CardContent,
@@ -8,10 +6,10 @@ import {
 	CardHeader,
 	CardTitle
 } from '@/components/ui/card';
-
 import { Anton } from 'next/font/google';
 // import { Button as Buton } from 'flowbite-react';
 import Link from 'next/link';
+import * as React from 'react';
 
 const anton = Anton({
 	subsets: ['latin'],

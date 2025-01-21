@@ -47,7 +47,6 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - **pretest**: Runs the `lint:css` script.
 - **gitformatstaged**: Formats staged files using Prettier.
 
-
 # Project Structure
 
 This document provides a detailed overview of the folder structure of the project.
@@ -173,7 +172,6 @@ This document provides a detailed overview of the folder structure of the projec
 
 - Middleware configuration file.
 
-
 # Project Dependencies
 
 This project uses a variety of npm packages to provide functionality and support for development. Below is a list of all the dependencies along with a brief description of what each package does.
@@ -264,4 +262,3 @@ This project uses a variety of npm packages to provide functionality and support
 - **stylelint-config-tailwindcss**: A shareable config for Stylelint that works with Tailwind CSS.
 - **tailwindcss**: A utility-first CSS framework.
 - **typescript**: A typed superset of JavaScript that compiles to plain JavaScript.
-

@@ -1,6 +1,6 @@
-import type { NextConfig } from 'next';
 import withPlaiceholder from '@plaiceholder/next';
 import { readdirSync } from 'fs';
+import type { NextConfig } from 'next';
 
 /**
  * @type {import('next').NextConfig}

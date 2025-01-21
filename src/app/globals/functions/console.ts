@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+
 const show = {
 	log: (...args: unknown[]) => {
 		if (process.env.NODE_ENV === 'development') {

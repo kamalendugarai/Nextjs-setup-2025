@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { i18nRouter } from 'next-i18n-router';
 import i18nConfig from '../i18nConfig';
+import { i18nRouter } from 'next-i18n-router';
+import { NextRequest, NextResponse } from 'next/server';
 
 /**
  * The middleware function that handles incoming requests for the Next.js application.
@@ -11,8 +11,7 @@ import i18nConfig from '../i18nConfig';
  * @param request - The incoming Next.js request object.
  * @returns A modified response object with the necessary security headers.
  */
-const PUBLIC_FILE = 
-/\.(.*)$/;
+const PUBLIC_FILE = /\.(.*)$/;
 export function middleware(request: NextRequest) {
 	const authRoutes = process.env.AUTHROUTES?.split(',') || [];
 	const unAuthRoutes = process.env.UNAUTHROUTES?.split(',') || [];
