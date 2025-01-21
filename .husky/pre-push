@@ -14,8 +14,8 @@ echo "${WHITE}"
 npm run lint
 
 echo ""
-echo "${YELLOW} RUNNING prettier on staged files"
+echo "${YELLOW} RUNNING prettier over all files"
 echo "${WHITE}"
-npm run gitformatstaged
+npx prettier . --write --fix --ignore-unknown --config ./.prettierrc
 
 
