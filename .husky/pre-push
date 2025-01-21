@@ -13,4 +13,9 @@ echo "${WHITE}"
 
 npm run lint
 
+echo ""
+echo "${YELLOW} RUNNING prettier on staged files"
+echo "${WHITE}"
+npm run gitformatstaged
+
 
